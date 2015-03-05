@@ -13,7 +13,7 @@ What this package do :
     - Added image (for News Item), leadimage (for Event) in content items
     - Use only Atom as default view in FeedSettings
 
-It package also added event startdate, enddate, location, organizer, type into feed items as explain in
+It package added event startdate, enddate, location, organizer, type into feed items as explain in
 http://web.resource.org/rss/1.0/modules/event/
 
 * `Source code @ GitHub <https://github.com/collective/collective.atomrss>`_
