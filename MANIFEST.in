@@ -1,8 +1,6 @@
-include *.cfg *.rst *.in *.txt
+include *.cfg *.rst *.in *.txt *.py
 
 recursive-include docs *
 recursive-include src *
 
-exclude bootstrap-buildout.py
 exclude Makefile
-
