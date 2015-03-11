@@ -3,6 +3,7 @@ from Products.ATContentTypes.interfaces import IATEvent
 from Products.CMFPlone.browser.syndication.adapters import BaseItem
 from Products.CMFPlone.browser.syndication.settings import FeedSettings
 from Products.CMFPlone.interfaces.syndication import IFeed
+from Products.CMFPlone.interfaces.syndication import ISyndicatable
 from Products.CMFPlone.browser.syndication.settings import FEED_SETTINGS_KEY
 from zope.annotation.interfaces import IAnnotations
 from zope.component import adapts
@@ -11,6 +12,7 @@ from zope.component import adapts
 class AtomFeedSettings(FeedSettings):
     """ Change default value for feed : atom.xml is first and render_body True
     """
+    adapts(ISyndicatable)
 
     def __init__(self, context):
         super(AtomFeedSettings, self).__init__(context)
@@ -37,7 +39,7 @@ class NewsFeedItem(BaseItem):
             scaling)
 
 
-class EventFeedIItem(BaseItem):
+class EventFeedItem(BaseItem):
     adapts(IATEvent, IFeed)
 
     @property
