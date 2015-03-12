@@ -38,12 +38,6 @@
     <utility factory="collective.atomrss.profile.HiddenProfiles"
         name="collective.atomrss.hiddenprofiles" />
 
-    <adapter
-        factory=".adapters.AtomFeedSettings"
-        for="Products.CMFPlone.interfaces.syndication.ISyndicatable"
-        provides="Products.CMFPlone.interfaces.syndication.IFeedSettings"
-        name="AtomRssSettings"
-        />
 
     <adapter
         factory=".adapters.NewsFeedItem"

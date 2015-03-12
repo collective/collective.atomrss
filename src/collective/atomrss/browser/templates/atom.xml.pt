@@ -38,7 +38,7 @@
                           length item/file_length;
                           type item/file_type;" />
       <id tal:content="string:urn:syndication:${item/uid}">urn:syndication:12345678</id>
-      <summary tal:condition="not: feed/settings/render_body" tal:content="item/description" />
+      <summary tal:condition="not: feed/settings/render_body" ><div tal:replace="item/description"/> </summary>
       <content tal:condition="feed/settings/render_body"  type="html" xml:base="" xml:lang="en-US" xml:space="preserve"
                tal:attributes="xml:base url; xml:lang feed/language;">
         <tal:block tal:replace="structure string:&lt;![CDATA["/>
