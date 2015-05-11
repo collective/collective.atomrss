@@ -34,7 +34,6 @@ class NewsFeedItem(BaseItem):
 
     @property
     def banner_image_url(self):
-        import ipdb; ipdb.set_trace()
         image_field = 'image'
         scaling = 'preview'
         return "{0}/{1}_{2}".format(
