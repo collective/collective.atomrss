@@ -1,7 +1,7 @@
 Changelog
 =========
 
-0.1.4 (unreleased)
+0.1.4 (2015-05-12)
 ------------------
 
 - Modifications to get events' startdate and enddate into RSS feeds.
