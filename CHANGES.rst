@@ -4,13 +4,8 @@ Changelog
 0.1.4 (unreleased)
 ------------------
 
-- Nothing changed yet.
-
-
-0.1.3 (2015-04-30)
-------------------
-
-- Nothing changed yet.
+- Modifications to get events' startdate and enddate into RSS feeds.
+  [cboulanger]
 
 
 0.1.2 (2015-03-12)
