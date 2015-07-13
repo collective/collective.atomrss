@@ -9,9 +9,9 @@ Package extends Plone syndication for using Atom RSS by default.
 It added some field as events date, image (for news) and leadimage (for event) into rss content feed.
 This package also add content text into rss feed
 What this package do :
-    - Added content into rss items feed, by default, render_body is set to True in FeedSettings
-    - Added image (for News Item), leadimage (for Event) in content items
-    - Use only Atom as default view in FeedSettings
+* Added content into rss items feed, by default, render_body is set to True in FeedSettings
+* Added image (for News Item), leadimage (for Event) in content items
+* Use only Atom as default view in FeedSettings
 
 It also package added event startdate, enddate, location, organizer, type into feed items as explain in
 http://web.resource.org/rss/1.0/modules/event/
@@ -25,8 +25,8 @@ How it works
 ============
 
 This package :
-    - adapts IFeedSettings for changing default value of rss feed.
-    - override atom.xml browserview for adding news image and event informations.
+* adapts IFeedSettings for changing default value of rss feed.
+* override atom.xml browserview for adding news image and event informations.
 
 
 Installation
