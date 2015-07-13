@@ -10,3 +10,4 @@ var
 *.pyc
 *.egg-info
 share/
+buildout-cache/
