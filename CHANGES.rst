@@ -4,7 +4,8 @@ Changelog
 0.1.5 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Lint README file
+  [bsuttor]
 
 
 0.1.4 (2015-05-12)
