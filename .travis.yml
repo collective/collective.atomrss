@@ -1,11 +1,9 @@
 language: python
 python:
   - 2.7
-
 install:
   - mkdir -p buildout-cache/{eggs,downloads}
-  - $(which echo) -e "[buildout]\nextends = buildout.d/travis.cfg" > buildout.cfg
-  - make version=$TRAVIS_PYTHON_VERSION .installed.cfg
-
+  - python bootstrap-buildout.py -c travis.cfg
+  - bin/buildout -Nc travis.cfg
 script:
-  - make tests
+    - bin/test --all
