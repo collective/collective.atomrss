@@ -36,6 +36,7 @@ setup(
         'Plone',
         'setuptools',
         'plone.api',
+        'plone.app.contenttypes',
     ],
     extras_require={
         'test': [
