@@ -4,6 +4,9 @@ Changelog
 0.1.5 (unreleased)
 ------------------
 
+- Add dexterity support.
+  [bsuttor]
+
 - Lint README file
   [bsuttor]
 

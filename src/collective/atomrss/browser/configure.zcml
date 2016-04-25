@@ -13,5 +13,4 @@
         layer="..interfaces.ICollectiveAtomrssLayer"
         />
 
-
 </configure>

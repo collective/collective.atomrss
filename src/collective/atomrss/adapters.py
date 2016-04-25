@@ -1,5 +1,7 @@
 from Products.ATContentTypes.interfaces import IATNewsItem
+from plone.app.contenttypes.interfaces import INewsItem
 from Products.ATContentTypes.interfaces import IATEvent
+from plone.app.contenttypes.interfaces import IEvent
 from Products.CMFPlone.browser.syndication.adapters import BaseItem
 from Products.CMFPlone.browser.syndication.settings import FeedSettings
 from Products.CMFPlone.interfaces.syndication import IFeed
@@ -30,6 +32,19 @@ class AtomFeedSettings(FeedSettings):
 
 
 class NewsFeedItem(BaseItem):
+    adapts(INewsItem, IFeed)
+
+    @property
+    def banner_image_url(self):
+        image_field = 'image'
+        scaling = 'preview'
+        return "{0}/@@images/{1}/{2}".format(
+            self.context.absolute_url(),
+            image_field,
+            scaling)
+
+
+class ATNewsFeedItem(BaseItem):
     adapts(IATNewsItem, IFeed)
 
     @property
@@ -43,6 +58,55 @@ class NewsFeedItem(BaseItem):
 
 
 class EventFeedItem(BaseItem):
+    adapts(IEvent, IFeed)
+
+    @property
+    def startdate(self):
+        return str(self.context.start_date)
+
+    @property
+    def enddate(self):
+        return str(self.context.end_date)
+
+    @property
+    def contactname(self):
+        return self.context.contact_name()
+
+    @property
+    def contactemail(self):
+        return self.context.contact_email()
+
+    @property
+    def contactphone(self):
+        return self.context.contact_phone()
+
+    @property
+    def location(self):
+        return self.context.location
+
+    @property
+    def eventurl(self):
+        return self.context.event_url()
+
+    @property
+    def banner_image_url(self):
+        image_field = 'image'
+        field = self.context.getField(image_field)
+        # Check if there is a leadImage and if it's not empty
+        if field is not None:
+            value = field.get(self.context)
+            if not bool(value):
+                return False
+        else:
+            return False
+        scaling = 'preview'
+        return "{0}/{1}_{2}".format(
+            self.context.absolute_url(),
+            image_field,
+            scaling)
+
+
+class ATEventFeedItem(BaseItem):
     adapts(IATEvent, IFeed)
 
     @property

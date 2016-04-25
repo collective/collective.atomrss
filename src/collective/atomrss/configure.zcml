@@ -40,15 +40,27 @@
 
 
     <adapter
-        factory=".adapters.NewsFeedItem"
+        factory=".adapters.ATNewsFeedItem"
         for="Products.ATContentTypes.interfaces.IATNewsItem
              Products.CMFPlone.interfaces.syndication.IFeed"
         provides="Products.CMFPlone.interfaces.syndication.IFeedItem" />
 
     <adapter
-        factory=".adapters.EventFeedItem"
+        factory=".adapters.ATEventFeedItem"
         for="Products.ATContentTypes.interfaces.IATEvent
              Products.CMFPlone.interfaces.syndication.IFeed"
         provides="Products.CMFPlone.interfaces.syndication.IFeedItem" />
 
+
+    <adapter
+        factory=".adapters.NewsFeedItem"
+        for="plone.app.contenttypes.interfaces.INewsItem
+             Products.CMFPlone.interfaces.syndication.IFeed"
+        provides="Products.CMFPlone.interfaces.syndication.IFeedItem" />
+
+    <adapter
+        factory=".adapters.EventFeedItem"
+        for="plone.app.contenttypes.interfaces.IEvent
+             Products.CMFPlone.interfaces.syndication.IFeed"
+        provides="Products.CMFPlone.interfaces.syndication.IFeedItem" />
 </configure>
