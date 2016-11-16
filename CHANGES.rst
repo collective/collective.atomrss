@@ -4,7 +4,8 @@ Changelog
 0.1.6 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Fix event rss.
+  [bsuttor]
 
 
 0.1.5 (2016-04-25)

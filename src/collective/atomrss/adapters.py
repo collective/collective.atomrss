@@ -62,23 +62,23 @@ class EventFeedItem(BaseItem):
 
     @property
     def startdate(self):
-        return str(self.context.start_date)
+        return getattr(self.context, 'start', '')
 
     @property
     def enddate(self):
-        return str(self.context.end_date)
+        return getattr(self.context, 'end', '')
 
     @property
     def contactname(self):
-        return self.context.contact_name()
+        return getattr(self.context, 'contact_name', '')
 
     @property
     def contactemail(self):
-        return self.context.contact_email()
+        return getattr(self.context, 'contact_email', '')
 
     @property
     def contactphone(self):
-        return self.context.contact_phone()
+        return getattr(self.context, 'contact_phone', '')
 
     @property
     def location(self):
@@ -86,24 +86,21 @@ class EventFeedItem(BaseItem):
 
     @property
     def eventurl(self):
-        return self.context.event_url()
+        return getattr(self.context, 'event_url', '')
 
     @property
     def banner_image_url(self):
         image_field = 'image'
-        field = self.context.getField(image_field)
+        field = getattr(self.context, image_field)
         # Check if there is a leadImage and if it's not empty
-        if field is not None:
-            value = field.get(self.context)
-            if not bool(value):
-                return False
+        if field is not None and field.data:
+            scaling = 'preview'
+            return "{0}/@@images/{1}/{2}".format(
+                self.context.absolute_url(),
+                image_field,
+                scaling)
         else:
             return False
-        scaling = 'preview'
-        return "{0}/{1}_{2}".format(
-            self.context.absolute_url(),
-            image_field,
-            scaling)
 
 
 class ATEventFeedItem(BaseItem):

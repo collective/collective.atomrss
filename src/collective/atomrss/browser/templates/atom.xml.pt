@@ -44,20 +44,34 @@
         <tal:block tal:replace="structure string:&lt;![CDATA["/>
         <tal:block tal:condition="exists: item/banner_image_url">
           <img class="banner_image" tal:condition="item/banner_image_url" tal:attributes="src item/banner_image_url;alt item/title" />
-        </tal:block>       
+        </tal:block>
         <div class="description" tal:condition="item/description" tal:content="item/description" />
         <tal:block tal:condition="python: item.context.portal_type=='Event'">
         <ev:organizer>
-          <name tal:content="item/contactname" /><br/>
-          <email tal:content="item/contactemail" tal:condition="item/contactemail" /><br/>
-          <phone tal:content="item/contactphone" tal:condition="item/contactphone" /><br/>
+          <tal:cond tal:condition="item/contactname">
+            <name tal:content="item/contactname"/><br />
+          </tal:cond>
+          <tal:cond tal:condition="item/contactemail">
+            <email tal:content="item/contactemail" /><br />
+          </tal:cond>
+          <tal:cond tal:condition="item/contactphone">
+            <phone tal:content="item/contactphone" /><br />
+          </tal:cond>
         </ev:organizer>
-        <ev:location tal:content="item/location">Washington, DC</ev:location><br/>
-        <ev:url tal:content="item/eventurl">www.plone.org</ev:url><br/>
-        du <ev:startdate tal:content="item/startdate">2001-09-18</ev:startdate>
-        au <ev:enddate tal:content="item/enddate">2001-09-21</ev:enddate>
+        <tal:cond tal:condition="item/location">
+          <ev:location tal:content="item/location">Washington, DC</ev:location><br />
+        </tal:cond>
+        <tal:cond tal:condition="item/eventurl">
+          <ev:url tal:content="item/eventurl">www.plone.org</ev:url><br />
+        </tal:cond>
+        <tal:cond tal:condition="item/startdate">
+          du <ev:startdate tal:content="item/startdate">2001-09-18</ev:startdate>
+        </tal:cond>
+        <tal:cond tal:condition="item/enddate">
+          au <ev:enddate tal:content="item/enddate">2001-09-21</ev:enddate>
+        </tal:cond>
         </tal:block>
-        
+
         <tal:block tal:replace="structure item/body"/>
         <tal:block tal:replace="structure string:]]&gt;"/>
 
