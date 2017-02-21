@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import unittest2 as unittest
+import unittest
 from plone.browserlayer import utils
 from zope.event import notify
 from zope.traversing.interfaces import BeforeTraverseEvent
