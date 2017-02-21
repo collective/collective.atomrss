@@ -37,14 +37,20 @@
           tal:attributes="href item/file_url;
                           length item/file_length;
                           type item/file_type;" />
+
+      <link tal:condition="item/image_obj" rel="enclosure"
+            tal:attributes="href item/image_obj/url;
+                            length item/image_obj/size;
+                            type item/image_obj/type;
+                            name item/image_obj/title" />
       <id tal:content="string:urn:syndication:${item/uid}">urn:syndication:12345678</id>
       <summary tal:condition="not: feed/settings/render_body" ><div tal:replace="item/description"/> </summary>
       <content tal:condition="feed/settings/render_body"  type="html" xml:base="" xml:lang="en-US" xml:space="preserve"
                tal:attributes="xml:base url; xml:lang feed/language;">
         <tal:block tal:replace="structure string:&lt;![CDATA["/>
-        <tal:block tal:condition="exists: item/banner_image_url">
-          <img class="banner_image" tal:condition="item/banner_image_url" tal:attributes="src item/banner_image_url;alt item/title" />
-        </tal:block>
+        <!-- <tal:block tal:condition="item/image_obj">
+          <img class="banner_image" tal:condition="item/image_obj/url" tal:attributes="src item/image_obj/url;alt item/title" />
+        </tal:block> -->
         <div class="description" tal:condition="item/description" tal:content="item/description" />
         <tal:block tal:condition="python: item.context.portal_type=='Event'">
         <ev:organizer>

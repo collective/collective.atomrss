@@ -35,20 +35,43 @@ class NewsFeedItem(BaseItem):
     adapts(INewsItem, IFeed)
 
     @property
-    def banner_image_url(self):
+    def image_obj(self):
         image_field = 'image'
-        scaling = 'preview'
-        return "{0}/@@images/{1}/{2}".format(
-            self.context.absolute_url(),
-            image_field,
-            scaling)
+        field = getattr(self.context, image_field)
+        # Check if there is a leadImage and if it's not empty
+        if field is not None and field.data:
+            scaling = 'preview'
+            img_url = "{0}/@@images/{1}/{2}".format(
+                self.context.absolute_url(),
+                image_field,
+                scaling)
+            img_size = field.size
+            img_type = field.contentType
+            img_title = field.filename
+            return {
+                'url': img_url,
+                'size': img_size,
+                'type': img_type,
+                'title': img_title
+            }
+        else:
+            return False
+
+    @property
+    def image_url(self):
+        """ backward compatibilites """
+        image_obj = self.image_obj()
+        if not image_obj:
+            return False
+        else:
+            return image_obj.get('url')
 
 
 class ATNewsFeedItem(BaseItem):
     adapts(IATNewsItem, IFeed)
 
     @property
-    def banner_image_url(self):
+    def image_url(self):
         image_field = 'image'
         scaling = 'preview'
         return "{0}/{1}_{2}".format(
@@ -56,6 +79,10 @@ class ATNewsFeedItem(BaseItem):
             image_field,
             scaling)
 
+    @property
+    def image_obj(self):
+        """ Used to dexterity content types """
+        return False
 
 class EventFeedItem(BaseItem):
     adapts(IEvent, IFeed)
@@ -89,19 +116,36 @@ class EventFeedItem(BaseItem):
         return getattr(self.context, 'event_url', '')
 
     @property
-    def banner_image_url(self):
+    def image_obj(self):
         image_field = 'image'
         field = getattr(self.context, image_field)
         # Check if there is a leadImage and if it's not empty
         if field is not None and field.data:
             scaling = 'preview'
-            return "{0}/@@images/{1}/{2}".format(
+            img_url = "{0}/@@images/{1}/{2}".format(
                 self.context.absolute_url(),
                 image_field,
                 scaling)
+            img_size = field.size
+            img_type = field.contentType
+            img_title = field.filename
+            return {
+                'url': img_url,
+                'size': img_size,
+                'type': img_type,
+                'title': img_title
+            }
         else:
             return False
 
+    @property
+    def image_url(self):
+        """ backward compatibilites """
+        image_obj = self.image_obj()
+        if not image_obj:
+            return False
+        else:
+            return image_obj.get('url')
 
 class ATEventFeedItem(BaseItem):
     adapts(IATEvent, IFeed)
@@ -135,7 +179,7 @@ class ATEventFeedItem(BaseItem):
         return self.context.event_url()
 
     @property
-    def banner_image_url(self):
+    def image_url(self):
         image_field = 'leadImage'
         field = self.context.getField(image_field)
         # Check if there is a leadImage and if it's not empty
@@ -150,3 +194,8 @@ class ATEventFeedItem(BaseItem):
             self.context.absolute_url(),
             image_field,
             scaling)
+
+    @property
+    def image_obj(self):
+        """ Used to dexterity content types """
+        return False

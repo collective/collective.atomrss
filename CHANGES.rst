@@ -4,7 +4,8 @@ Changelog
 0.1.7 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Use enclosure media type for lead image.
+  [bsuttor]
 
 
 0.1.6 (2016-11-16)
