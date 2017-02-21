@@ -1,7 +1,7 @@
 Changelog
 =========
 
-0.1.7 (unreleased)
+0.1.7 (2017-02-21)
 ------------------
 
 - Use enclosure media type for lead image.
