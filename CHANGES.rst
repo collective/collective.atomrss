@@ -1,7 +1,7 @@
 Changelog
 =========
 
-0.1.8 (unreleased)
+0.1.8 (2017-03-24)
 ------------------
 
 - Do not try to see an image on file.
