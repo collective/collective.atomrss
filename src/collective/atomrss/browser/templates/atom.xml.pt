@@ -37,12 +37,13 @@
           tal:attributes="href item/file_url;
                           length item/file_length;
                           type item/file_type;" />
-
-      <link tal:condition="item/image_obj" rel="enclosure"
+      <tal:cond tal:condition="python: getattr(item, 'image_obj', False)">
+      <link  rel="enclosure"
             tal:attributes="href item/image_obj/url;
                             length item/image_obj/size;
                             type item/image_obj/type;
                             name item/image_obj/title" />
+      </tal:cond>
       <id tal:content="string:urn:syndication:${item/uid}">urn:syndication:12345678</id>
       <summary tal:condition="not: feed/settings/render_body" ><div tal:replace="item/description"/> </summary>
       <content tal:condition="feed/settings/render_body"  type="html" xml:base="" xml:lang="en-US" xml:space="preserve"

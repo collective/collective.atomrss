@@ -4,7 +4,8 @@ Changelog
 0.1.8 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Do not try to see an image on file.
+  [bsuttor]
 
 
 0.1.7 (2017-02-21)
