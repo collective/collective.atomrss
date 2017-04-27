@@ -1,7 +1,7 @@
 Changelog
 =========
 
-0.1.9 (unreleased)
+0.1.9 (2017-04-27)
 ------------------
 
 - Formated date for event start and end.
