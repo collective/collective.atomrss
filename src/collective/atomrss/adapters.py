@@ -1,13 +1,14 @@
-from Products.ATContentTypes.interfaces import IATNewsItem
+# -*- coding: utf-8 -*-
+from plone.app.contenttypes.interfaces import IEvent
 from plone.app.contenttypes.interfaces import INewsItem
 from Products.ATContentTypes.interfaces import IATEvent
-from plone.app.contenttypes.interfaces import IEvent
+from Products.ATContentTypes.interfaces import IATNewsItem
 from Products.CMFPlone.browser.syndication.adapters import BaseItem
+from Products.CMFPlone.browser.syndication.settings import FEED_SETTINGS_KEY
 from Products.CMFPlone.browser.syndication.settings import FeedSettings
 from Products.CMFPlone.interfaces.syndication import IFeed
-from Products.CMFPlone.interfaces.syndication import ISyndicatable
 from Products.CMFPlone.interfaces.syndication import IFeedSettings
-from Products.CMFPlone.browser.syndication.settings import FEED_SETTINGS_KEY
+from Products.CMFPlone.interfaces.syndication import ISyndicatable
 from zope.annotation.interfaces import IAnnotations
 from zope.component import adapts
 from zope.interface import implements
@@ -41,7 +42,7 @@ class NewsFeedItem(BaseItem):
         # Check if there is a leadImage and if it's not empty
         if field is not None and field.data:
             scaling = 'preview'
-            img_url = "{0}/@@images/{1}/{2}".format(
+            img_url = '{0}/@@images/{1}/{2}'.format(
                 self.context.absolute_url(),
                 image_field,
                 scaling)
@@ -74,7 +75,7 @@ class ATNewsFeedItem(BaseItem):
     def image_url(self):
         image_field = 'image'
         scaling = 'preview'
-        return "{0}/{1}_{2}".format(
+        return '{0}/{1}_{2}'.format(
             self.context.absolute_url(),
             image_field,
             scaling)
@@ -84,8 +85,12 @@ class ATNewsFeedItem(BaseItem):
         """ Used to dexterity content types """
         return False
 
+
 class EventFeedItem(BaseItem):
     adapts(IEvent, IFeed)
+
+    def formated_date(self, date):
+        return date.strftime('%d/%m/%Y %H:%M')
 
     @property
     def startdate(self):
@@ -122,7 +127,7 @@ class EventFeedItem(BaseItem):
         # Check if there is a leadImage and if it's not empty
         if field is not None and field.data:
             scaling = 'preview'
-            img_url = "{0}/@@images/{1}/{2}".format(
+            img_url = '{0}/@@images/{1}/{2}'.format(
                 self.context.absolute_url(),
                 image_field,
                 scaling)
@@ -147,8 +152,12 @@ class EventFeedItem(BaseItem):
         else:
             return image_obj.get('url')
 
+
 class ATEventFeedItem(BaseItem):
     adapts(IATEvent, IFeed)
+
+    def formated_date(self, date):
+        return date.strftime('%d/%m/%Y %H:%M')
 
     @property
     def startdate(self):
@@ -190,7 +199,7 @@ class ATEventFeedItem(BaseItem):
         else:
             return False
         scaling = 'preview'
-        return "{0}/{1}_{2}".format(
+        return '{0}/{1}_{2}'.format(
             self.context.absolute_url(),
             image_field,
             scaling)

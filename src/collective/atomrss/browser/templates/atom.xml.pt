@@ -72,10 +72,10 @@
           <ev:url tal:content="item/eventurl">www.plone.org</ev:url><br />
         </tal:cond>
         <tal:cond tal:condition="item/startdate">
-          du <ev:startdate tal:content="item/startdate">2001-09-18</ev:startdate>
+          du <ev:startdate tal:content="python: item.formated_date(item.startdate)">2001-09-18</ev:startdate>
         </tal:cond>
         <tal:cond tal:condition="item/enddate">
-          au <ev:enddate tal:content="item/enddate">2001-09-21</ev:enddate>
+          au <ev:enddate tal:content="python: item.formated_date(item.enddate)">2001-09-21</ev:enddate>
         </tal:cond>
         </tal:block>
 
