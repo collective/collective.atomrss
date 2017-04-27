@@ -4,7 +4,8 @@ Changelog
 0.1.10 (unreleased)
 -------------------
 
-- Nothing changed yet.
+- Fix at event date.
+  [bsuttor]
 
 
 0.1.9 (2017-04-27)

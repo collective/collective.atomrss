@@ -157,7 +157,16 @@ class ATEventFeedItem(BaseItem):
     adapts(IATEvent, IFeed)
 
     def formated_date(self, date):
-        return date.strftime('%d/%m/%Y %H:%M')
+        from datetime import datetime
+        if isinstance(date, datetime):
+            return date.strftime('%d/%m/%Y %H:%M')
+        else:
+            try:
+                mydate = date.split(' GMT')[0]
+                dt = datetime.strptime(mydate, '%Y/%m/%d %H:%M:%S')
+                return dt.strftime('%d/%m/%Y %H:%M')
+            except:
+                return date
 
     @property
     def startdate(self):
