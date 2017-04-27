@@ -1,7 +1,7 @@
 Changelog
 =========
 
-0.1.10 (unreleased)
+0.1.10 (2017-04-27)
 -------------------
 
 - Fix at event date.
