@@ -11,3 +11,4 @@ var
 *.egg-info
 share/
 buildout-cache/
+pip-selfcheck.json
