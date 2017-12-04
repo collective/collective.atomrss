@@ -10,8 +10,10 @@ bootstrap-buildout.py:
 
 bin/buildout: bootstrap-buildout.py buildout.cfg
 	virtualenv-2.7 .
-	./bin/python bootstrap-buildout.py
+	./bin/python bootstrap-buildout.py --buildout-version 2.7.0
 	touch $@
+
+buildout: bin/buildout bin/instance
 
 bin/instance: bin/buildout
 	${buildoutcmd}
