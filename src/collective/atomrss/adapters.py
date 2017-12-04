@@ -114,7 +114,7 @@ class EventFeedItem(BaseItem):
 
     @property
     def location(self):
-        return self.context.location
+        return getattr(self.context, 'location', '')
 
     @property
     def eventurl(self):

@@ -4,7 +4,8 @@ Changelog
 0.1.11 (unreleased)
 -------------------
 
-- Nothing changed yet.
+- Fix event location.
+  [bsuttor]
 
 
 0.1.10 (2017-04-27)
