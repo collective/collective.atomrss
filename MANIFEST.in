@@ -4,4 +4,5 @@ recursive-include docs *
 recursive-include src *
 
 exclude Makefile
+exclude .installed.cfg
 recursive-exclude src *.pyc
