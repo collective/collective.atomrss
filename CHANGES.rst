@@ -1,7 +1,7 @@
 Changelog
 =========
 
-0.1.11 (unreleased)
+0.1.11 (2017-12-04)
 -------------------
 
 - Fix event location.
