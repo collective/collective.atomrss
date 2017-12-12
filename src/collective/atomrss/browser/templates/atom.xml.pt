@@ -66,7 +66,7 @@
           </tal:cond>
         </ev:organizer>
         <tal:cond tal:condition="item/location">
-          <ev:location tal:content="item/location">Washington, DC</ev:location><br />
+          <ev:location tal:content="structure item/location">Washington, DC</ev:location><br />
         </tal:cond>
         <tal:cond tal:condition="item/eventurl">
           <ev:url tal:content="item/eventurl">www.plone.org</ev:url><br />

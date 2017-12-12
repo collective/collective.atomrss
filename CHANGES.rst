@@ -4,7 +4,8 @@ Changelog
 0.1.12 (unreleased)
 -------------------
 
-- Nothing changed yet.
+- Accept html content for address.
+  [bsuttor]
 
 
 0.1.11 (2017-12-04)
