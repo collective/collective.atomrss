@@ -14,7 +14,7 @@ long_description = \
 
 setup(
     name='collective.atomrss',
-    version='0.1.12.dev0',
+    version='0.1.12',
     description="Package extends Plone syndication for using Atom RSS by default. It also added some field as events date, contentlead image into rss feed.",
     long_description=long_description,
     # Get more from http://pypi.python.org/pypi?%3Aaction=list_classifiers
