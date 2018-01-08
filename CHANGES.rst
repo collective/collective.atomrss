@@ -1,7 +1,7 @@
 Changelog
 =========
 
-0.1.13 (unreleased)
+0.1.13 (2018-01-08)
 -------------------
 
 - Enclose text of an object in details tag.
