@@ -4,7 +4,8 @@ Changelog
 0.1.13 (unreleased)
 -------------------
 
-- Nothing changed yet.
+- Enclose text of an object in details tag.
+  [bsuttor]
 
 
 0.1.12 (2017-12-12)

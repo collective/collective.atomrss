@@ -79,7 +79,8 @@
         </tal:cond>
         </tal:block>
 
-        <tal:block tal:replace="structure item/body"/>
+        <details><tal:block tal:replace="structure item/body"/></details>
+
         <tal:block tal:replace="structure string:]]&gt;"/>
 
       </content>
